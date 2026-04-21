@@ -35,16 +35,16 @@
             backdrop-filter: blur(10px);
         }
 
-     .logo-header {
+        .logo-header {
             position: absolute;
             left: 2rem;
             display: flex;
             align-items: center;
             flex-shrink: 0;
         }
-     .logo-link { display: inline-block; transition: transform 0.3s ease; }
-     .logo-link:hover { transform: scale(1.05); }
-     .logo-img { height: 70px; width: auto; display: block; }
+        .logo-link { display: inline-block; transition: transform 0.3s ease; }
+        .logo-link:hover { transform: scale(1.05); }
+        .logo-img { height: 70px; width: auto; display: block; }
 
         nav {
             display: flex;
@@ -65,7 +65,7 @@
         }
         nav a:hover, nav a.active { color: var(--verde-folha); border-bottom: 3px solid var(--verde-folha); }
 
-     .menu-toggle {
+        .menu-toggle {
             display: none;
             flex-direction: column;
             justify-content: space-between;
@@ -79,7 +79,7 @@
             position: absolute;
             right: 2rem;
         }
-     .menu-toggle span {
+        .menu-toggle span {
             display: block;
             height: 3px;
             width: 100%;
@@ -87,20 +87,54 @@
             border-radius: 3px;
             transition: all 0.3s ease;
         }
-     .menu-toggle.active span:nth-child(1) {
+        .menu-toggle.active span:nth-child(1) {
             transform: rotate(45deg) translate(8px, 8px);
         }
-     .menu-toggle.active span:nth-child(2) {
+        .menu-toggle.active span:nth-child(2) {
             opacity: 0;
         }
-     .menu-toggle.active span:nth-child(3) {
+        .menu-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
         }
 
-     .container { max-width: 1200px; margin: 7rem auto 3rem auto; padding: 0 2rem; text-align: center; }
+        .container { max-width: 1200px; margin: 7rem auto 3rem auto; padding: 0 2rem; text-align: center; }
         h2 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--marrom-escuro); margin-bottom: 1rem; font-weight: 900; }
-        .subtitulo { font-size: 1.2rem; color: var(--marrom-claro); margin-bottom: 2.5rem; font-weight: 600; }
+        .subtitulo { font-size: 1.2rem; color: var(--marrom-claro); margin-bottom: 2rem; font-weight: 600; }
         p { font-size: 1.1rem; max-width: 850px; margin: 0 auto 2.5rem auto; color: var(--marrom-claro); }
+
+        /* Selo Pet Friendly com pata */
+        .pet-friendly-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: var(--verde-folha);
+            color: var(--marrom-escuro);
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
+            border: 3px solid var(--marrom-escuro);
+            font-weight: 900;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 auto 2.5rem auto;
+            box-shadow: 0 4px 12px rgba(124, 179, 66, 0.4);
+            transition: all 0.3s;
+        }
+        .pet-friendly-tag:hover {
+            transform: scale(1.05);
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+        }
+        .pet-friendly-tag:hover svg {
+            fill: var(--branco);
+        }
+        .pet-friendly-tag svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--marrom-escuro);
+            transition: all 0.3s;
+        }
+
         .acomodacoes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
         .card-acomodacao { background-color: var(--branco); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(62, 39, 35, 0.15); border: 3px solid var(--verde-folha); transition: all 0.3s; text-decoration: none; color: inherit; display: block; }
         .card-acomodacao:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(124, 179, 66, 0.4); border-color: var(--verde-escuro); }
@@ -131,16 +165,16 @@
             opacity: 0;
             visibility: hidden;
         }
-     .btn-topo.mostrar {
+        .btn-topo.mostrar {
             opacity: 1;
             visibility: visible;
         }
-     .btn-topo:hover {
+        .btn-topo:hover {
             background-color: var(--verde-escuro);
             transform: translateY(-5px);
             box-shadow: 0 6px 20px rgba(124, 179, 66, 0.7);
         }
-     .btn-topo svg {
+        .btn-topo svg {
             width: 24px;
             height: 24px;
             fill: var(--branco);
@@ -151,9 +185,9 @@
 
         @media (max-width: 768px) {
             header { justify-content: space-between; padding: 0.8rem 1.5rem; }
-         .logo-header { position: static; }
-         .logo-img { height: 60px; }
-         .menu-toggle { display: flex; position: static; }
+            .logo-header { position: static; }
+            .logo-img { height: 60px; }
+            .menu-toggle { display: flex; position: static; }
             nav {
                 position: fixed;
                 top: 86px;
@@ -180,11 +214,13 @@
                 background-color: rgba(124, 179, 66, 0.1);
                 border-bottom: 1px solid rgba(124, 179, 66, 0.2);
             }
-         .container { padding: 0 1rem; margin-top: 6rem; }
+            .container { padding: 0 1rem; margin-top: 6rem; }
             h2 { font-size: 2rem; }
             .acomodacoes-grid { grid-template-columns: 1fr; }
-         .btn-topo { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-         .btn-topo svg { width: 22px; height: 22px; }
+            .btn-topo { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+            .btn-topo svg { width: 22px; height: 22px; }
+            .pet-friendly-tag { font-size: 0.9rem; padding: 0.6rem 1.1rem; }
+            .pet-friendly-tag svg { width: 20px; height: 20px; }
         }
     </style>
 </head>
@@ -213,7 +249,15 @@
     <main>
         <section class="container">
             <h2>Nossas Acomodações</h2>
-            <p class="subtitulo">Chalés com vista para o lago</p>
+            <p class="subtitulo"><big><strong>Chalés aconchegantes com vista para o lago!</strong></big></p>
+            
+            <div class="pet-friendly-tag">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M226.5 56.74C227.1 64.6 224 71.64 218.1 77.5C212.2 83.36 204.1 87.2 195.6 87.2C187.1 87.2 179 83.36 173.1 77.5C167.2 71.64 164.1 64.6 164.6 56.74C165.1 48.87 168.2 41.72 173.1 35.86C179 30 187.1 26.16 195.6 26.16C204.1 26.16 212.2 30 218.1 35.86C224 41.72 227.1 48.87 226.5 56.74zM406.5 56.74C407.1 64.6 404 71.64 398.1 77.5C392.2 83.36 384.1 87.2 375.6 87.2C367.1 87.2 359 83.36 353.1 77.5C347.2 71.64 344.1 64.6 344.6 56.74C345.1 48.87 348.2 41.72 353.1 35.86C359 30 367.1 26.16 375.6 26.16C384.1 26.16 392.2 30 398.1 35.86C404 41.72 407.1 48.87 406.5 56.74zM134.5 144.7C135.1 152.6 132 159.6 126.1 165.5C120.2 171.4 112.1 175.2 103.6 175.2C95.11 175.2 87 171.4 81.14 165.5C75.28 159.6 72.14 152.6 72.64 144.7C73.14 136.9 76.28 129.7 81.14 123.9C87 118 95.11 114.2 103.6 114.2C112.1 114.2 120.2 118 126.1 123.9C132 129.7 135.1 136.9 134.5 144.7zM498.5 144.7C499.1 152.6 496 159.6 490.1 165.5C484.2 171.4 476.1 175.2 467.6 175.2C459.1 175.2 451 171.4 445.1 165.5C439.3 159.6 436.1 152.6 436.6 144.7C437.1 136.9 440.3 129.7 445.1 123.9C451 118 459.1 114.2 467.6 114.2C476.1 114.2 484.2 118 490.1 123.9C496 129.7 499.1 136.9 498.5 144.7zM256 288C345.1 288 418.7 361.6 418.7 450.7C418.7 483.6 392.1 510.2 359.2 510.2H152.8C119.9 510.2 93.31 483.6 93.31 450.7C93.31 361.6 166.9 288 256 288z"/>
+                </svg>
+                Pet Friendly - Aceitamos seu pet!
+            </div>
+
             <p>
                 Todas as acomodações são equipadas para proporcionar conforto e contato com a natureza. 
                 Clique em cada uma para ver mais detalhes e reservar no Airbnb.
@@ -292,7 +336,7 @@
 
                 <!-- CABANA -->
                 <a href="https://www.airbnb.com.br/rooms/SEU_ID_AQUI" target="_blank" class="card-acomodacao destaque-cabana">
-                    <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=800" alt="Cabana da Serra">
+                    <img src="img/acomodacao/cabana.jpeg" alt="Cabana da Serra">
                     <div class="card-info">
                         <h3>Cabana da Serra</h3>
                         <p>Até 5 pessoas | 2 quartos | Exclusiva</p>
