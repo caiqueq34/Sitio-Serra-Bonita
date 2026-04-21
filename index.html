@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sítio Serra Bonita - São Lourenço da Serra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --verde-folha: #7CB342;
+            --verde-escuro: #558B2F;
+            --marrom-claro: #8D6E63;
+            --marrom-escuro: #3E2723;
+            --creme-fundo: #F5F5DC;
+            --branco: #FFFFFF;
+        }
+        body { font-family: 'Nunito', sans-serif; background-color: var(--creme-fundo); color: var(--marrom-escuro); line-height: 1.7; overflow-x: hidden; }
+
+        header {
+            background-color: rgba(62, 39, 35, 0.95);
+            padding: 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(62, 39, 35, 0.3);
+            border-bottom: 4px solid var(--verde-folha);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+    .logo-header {
+            position: absolute;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+    .logo-link { display: inline-block; transition: transform 0.3s ease; }
+    .logo-link:hover { transform: scale(1.05); }
+    .logo-img { height: 70px; width: auto; display: block; }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            justify-content: center;
+        }
+        nav a {
+            color: var(--creme-fundo);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            border-bottom: 3px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        nav a:hover { color: var(--verde-folha); border-bottom: 3px solid var(--verde-folha); }
+
+    .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            position: absolute;
+            right: 2rem;
+        }
+    .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--creme-fundo);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+    .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+    .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+    .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+    .hero-carrossel {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+        }
+    .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+    .hero-slide.active { opacity: 1; }
+    .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(62, 39, 35, 0.5), rgba(62, 39, 35, 0.7));
+        }
+    .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--branco);
+            z-index: 10;
+            width: 90%;
+            max-width: 900px;
+        }
+    .hero-content h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+    .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--branco);
+        }
+    .btn-hero {
+            display: inline-block;
+            background-color: var(--verde-folha);
+            color: var(--marrom-escuro);
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(124, 179, 66, 0.4);
+        }
+    .btn-hero:hover { background-color: var(--verde-escuro); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(124, 179, 66, 0.6); }
+    .hero-indicadores {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+    .hero-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid var(--branco);
+        }
+    .hero-dot.active { background-color: var(--verde-folha); transform: scale(1.3); }
+
+    .btn-topo {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background-color: var(--verde-folha);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(124, 179, 66, 0.5);
+            transition: all 0.3s;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+    .btn-topo.mostrar {
+            opacity: 1;
+            visibility: visible;
+        }
+    .btn-topo:hover {
+            background-color: var(--verde-escuro);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(124, 179, 66, 0.7);
+        }
+    .btn-topo svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--branco);
+        }
+
+        footer { background-color: var(--marrom-escuro); color: var(--creme-fundo); text-align: center; padding: 1.5rem; margin-top: 4rem; }
+        footer p { margin: 0 auto; color: var(--creme-fundo); font-weight: 600; max-width: 1200px; text-align: center; }
+
+    .container { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; text-align: center; }
+        h2 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--marrom-escuro); margin-bottom: 1.5rem; font-weight: 900; }
+        h3 { font-family: 'Merriweather', serif; font-size: 1.8rem; color: var(--verde-escuro); margin: 3rem 0 1.5rem 0; }
+        p { font-size: 1.1rem; max-width: 850px; margin: 0 auto 2.5rem auto; color: var(--marrom-claro); }
+
+    .destaques { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .destaque-item { background-color: var(--branco); padding: 2.5rem 2rem; border-radius: 16px; border: 3px solid var(--verde-folha); transition: all 0.3s; }
+    .destaque-item:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(124, 179, 66, 0.3); }
+    .destaque-icone { font-size: 3rem; display: block; margin-bottom: 1rem; }
+    .destaque-item h3 { font-size: 1.4rem; color: var(--verde-escuro); margin-bottom: 0.8rem; }
+    .destaque-item p { font-size: 1rem; margin: 0; }
+
+    .estrutura-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+    .estrutura-card { background-color: var(--branco); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(62, 39, 35, 0.15); border: 3px solid var(--verde-folha); transition: all 0.3s; }
+    .estrutura-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(124, 179, 66, 0.4); }
+    .estrutura-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .estrutura-info { padding: 1.2rem; text-align: left; }
+    .estrutura-info h4 { font-family: 'Merriweather', serif; font-size: 1.2rem; color: var(--verde-escuro); margin-bottom: 0.5rem; }
+    .estrutura-info p { font-size: 0.95rem; margin: 0; color: var(--marrom-claro); text-align: left; }
+
+    .mapa-sitio img {
+            width: 100%;
+            max-width: 2000px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(62, 39, 35, 0.3);
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+      .estrutura-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                justify-content: space-between;
+                padding: 0.8rem 1.5rem;
+            }
+
+      .logo-header {
+                position: static;
+            }
+
+      .logo-img { height: 60px; }
+
+      .menu-toggle {
+                display: flex;
+                position: static;
+            }
+
+            nav {
+                position: fixed;
+                top: 86px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 86px);
+                background-color: rgba(62, 39, 35, 0.98);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+                margin: 0;
+                transition: left 0.4s ease;
+                backdrop-filter: blur(10px);
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav a {
+                font-size: 1.3rem;
+                padding: 1.2rem 2rem;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(124, 179, 66, 0.2);
+            }
+
+            nav a:hover {
+                background-color: rgba(124, 179, 66, 0.1);
+                border-bottom: 1px solid rgba(124, 179, 66, 0.2);
+            }
+
+      .hero-content h1 { font-size: 2.2rem; }
+      .hero-content p { font-size: 1.1rem; }
+      .container { padding: 0 1rem; }
+            h2 { font-size: 2rem; }
+        }
+
+        @media (max-width: 640px) {
+      .estrutura-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-header">
+            <a href="index.html" class="logo-link">
+                <img src="img/index/logo-sem-fundo.png" alt="Logo Sítio Serra Bonita" class="logo-img">
+            </a>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="navMenu">
+            <a href="quemSomos.html">Quem somos</a>
+            <a href="servicos.html">Acomodações</a>
+            <a href="galeria.html">Galeria</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <div class="hero-carrossel">
+        <div class="hero-slide active" style="background-image: url('img/index/carrossel/1.jpeg');">
+            <div class="hero-content">
+                <h1>Sítio Serra Bonita</h1>
+                <p>Um refúgio histórico em São Lourenço da Serra</p>
+                <a href="servicos.html" class="btn-hero">Conheça as acomodações</a>
+            </div>
+        </div>
+        <div class="hero-slide" style="background-image: url('img/index/carrossel/2.jpeg');">
+            <div class="hero-content">
+                <h1>Estrutura de Lazer Completa</h1>
+                <p>Piscinas, quadras, trilhas e muito mais</p>
+                <a href="#estrutura" class="btn-hero">Veja a estrutura</a>
+            </div>
+        </div>
+        <div class="hero-slide" style="background-image: url('img/index/carrossel/3.jpeg');">
+            <div class="hero-content">
+                <h1>Natureza e Tranquilidade</h1>
+                <p>Dois lagos, trilha de 2km e mata nativa</p>
+                <a href="galeria.html" class="btn-hero">Ver galeria</a>
+            </div>
+        </div>
+        <div class="hero-slide" style="background-image: url('img/index/carrossel/4.jpg');">
+            <div class="hero-content">
+                <h1>7 Chalés + 1 Cabana</h1>
+                <p>Acomodações aconchegantes para toda família</p>
+                <a href="servicos.html" class="btn-hero">Reservar agora</a>
+            </div>
+        </div>
+
+        <div class="hero-indicadores">
+            <span class="hero-dot active" onclick="irParaSlide(0)"></span>
+            <span class="hero-dot" onclick="irParaSlide(1)"></span>
+            <span class="hero-dot" onclick="irParaSlide(2)"></span>
+            <span class="hero-dot" onclick="irParaSlide(3)"></span>
+        </div>
+    </div>
+
+    <main>
+        <section class="container">
+            <h2>Um lugar com história e natureza</h2>
+            <p>
+                O Sítio Serra Bonita é mais que uma hospedagem. É um pedaço da história da TV brasileira,
+                um espaço de lazer completo e um refúgio verde a apenas 60km de São Paulo.
+            </p>
+            <div class="destaques">
+                <div class="destaque-item">
+                    <span class="destaque-icone">🎬</span>
+                    <h3>Cenário de Novelas</h3>
+                    <p>Local de gravação de "Meu Pé de Laranja Lima" e "O Todo Poderoso"</p>
+                </div>
+                <div class="destaque-item">
+                    <span class="destaque-icone">🏡</span>
+                    <h3>8 Acomodações</h3>
+                    <p>7 chalés aconchegantes e 1 cabana exclusiva pra sua família</p>
+                </div>
+                <div class="destaque-item">
+                    <span class="destaque-icone">🌿</span>
+                    <h3>Lazer Completo</h3>
+                    <p>Piscinas, quadras, trilhas, lagos e muito mais</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="estrutura">
+            <h3>Estrutura de Lazer Completa</h3>
+            <div class="estrutura-grid">
+                <div class="estrutura-card">
+                    <img src="img/index/piscina.jpeg" alt="Piscinas">
+                    <div class="estrutura-info">
+                        <h4>Piscinas</h4>
+                        <p>Adulto e infantil para toda família se refrescar</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="img/index/tenis.jpeg" alt="Quadra de tênis">
+                    <div class="estrutura-info">
+                        <h4>Quadra de Tênis</h4>
+                        <p>Quadra aberta para jogos e treinos</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800" alt="Campo de futebol">
+                    <div class="estrutura-info">
+                        <h4>Campo de Futebol</h4>
+                        <p>Gramado para brincar e aproveitar</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="img/index/beach_tenis.jpeg" alt="Beach tennis">
+                    <div class="estrutura-info">
+                        <h4>Beach Tennis</h4>
+                        <p>Areia fofa para diversão completa</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="img/index/jogos.jpeg" alt="Salão de jogos">
+                    <div class="estrutura-info">
+                        <h4>Salão de Jogos e Festas</h4>
+                        <p>Sinuca, pebolim e espaço para eventos</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="img/index/deck.jpeg" alt="Área gourmet">
+                    <div class="estrutura-info">
+                        <h4>Área Gourmet</h4>
+                        <p>Churrasqueira completa com Deck</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="img/index/trilha.jpg " alt="Trilha">
+                    <div class="estrutura-info">
+                        <h4>Trilha Ecológica</h4>
+                        <p>2 km de caminhada em meio à mata nativa</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="img/index/lago.jpeg" alt="Lagos">
+                    <div class="estrutura-info">
+                        <h4>Lagos</h4>
+                        <p>Pesca esportiva e contemplação da natureza</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="img/index/playground.jpg" alt="Playground">
+                    <div class="estrutura-info">
+                        <h4>Playground</h4>
+                        <p>Área infantil completa para as crianças</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="img/index/fogueira.jpeg" alt="Trilha">
+                    <div class="estrutura-info">
+                        <h4>Espaço fogueira</h4>
+                        <p>Desfrutar e convidar a família para aquecer-se</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="img/index/natureza.jpeg" alt="Lagos">
+                    <div class="estrutura-info">
+                        <h4>Área ao ar livre</h4>
+                        <p>Curtir e relaxar na natureza</p>
+                    </div>
+                </div>
+
+                <div class="estrutura-card">
+                    <img src="img/index/cascata.jpeg" alt="Playground">
+                    <div class="estrutura-info">
+                        <h4>Cascata</h4>
+                        <p>Aproveite para conhecer com nossa castinha!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="mapa-sitio">
+                <img src="img/index/MAPA SITIO OK.png" alt="Mapa do Sítio Serra Bonita">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Sítio Serra Bonita - São Lourenço da Serra, SP 🌿</p>
+    </footer>
+
+    <a href="#" class="btn-topo" aria-label="Voltar ao topo">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4l-8 8h6v8h4v-8h6z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Carrossel
+        let slideAtual = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-dot');
+
+        function mostrarSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[n].classList.add('active');
+            dots[n].classList.add('active');
+        }
+
+        function irParaSlide(n) {
+            slideAtual = n;
+            mostrarSlide(slideAtual);
+        }
+
+        function proximoSlide() {
+            slideAtual = (slideAtual + 1) % slides.length;
+            mostrarSlide(slideAtual);
+        }
+
+        setInterval(proximoSlide, 5000);
+
+        // Menu Sanduíche
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Botão voltar ao topo
+        const btnTopo = document.querySelector('.btn-topo');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                btnTopo.classList.add('mostrar');
+            } else {
+                btnTopo.classList.remove('mostrar');
+            }
+        });
+    </script>
+</body>
+</html>

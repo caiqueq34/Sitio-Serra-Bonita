@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acomodações - Sítio Serra Bonita</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --verde-folha: #7CB342;
+            --verde-escuro: #558B2F;
+            --marrom-claro: #8D6E63;
+            --marrom-escuro: #3E2723;
+            --creme-fundo: #F5F5DC;
+            --branco: #FFFFFF;
+        }
+        body { font-family: 'Nunito', sans-serif; background-color: var(--creme-fundo); color: var(--marrom-escuro); line-height: 1.7; overflow-x: hidden; }
+        
+        header {
+            background-color: rgba(62, 39, 35, 0.95);
+            padding: 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(62, 39, 35, 0.3);
+            border-bottom: 4px solid var(--verde-folha);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+     .logo-header {
+            position: absolute;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+     .logo-link { display: inline-block; transition: transform 0.3s ease; }
+     .logo-link:hover { transform: scale(1.05); }
+     .logo-img { height: 70px; width: auto; display: block; }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            justify-content: center;
+        }
+        nav a {
+            color: var(--creme-fundo);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            border-bottom: 3px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        nav a:hover, nav a.active { color: var(--verde-folha); border-bottom: 3px solid var(--verde-folha); }
+
+     .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            position: absolute;
+            right: 2rem;
+        }
+     .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--creme-fundo);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+     .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+     .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+     .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+     .container { max-width: 1200px; margin: 7rem auto 3rem auto; padding: 0 2rem; text-align: center; }
+        h2 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--marrom-escuro); margin-bottom: 1rem; font-weight: 900; }
+        .subtitulo { font-size: 1.2rem; color: var(--marrom-claro); margin-bottom: 2.5rem; font-weight: 600; }
+        p { font-size: 1.1rem; max-width: 850px; margin: 0 auto 2.5rem auto; color: var(--marrom-claro); }
+        .acomodacoes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .card-acomodacao { background-color: var(--branco); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(62, 39, 35, 0.15); border: 3px solid var(--verde-folha); transition: all 0.3s; text-decoration: none; color: inherit; display: block; }
+        .card-acomodacao:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(124, 179, 66, 0.4); border-color: var(--verde-escuro); }
+        .card-acomodacao img { width: 100%; height: 220px; object-fit: cover; display: block; }
+        .card-info { padding: 1.5rem; text-align: left; }
+        .card-info h3 { font-family: 'Merriweather', serif; font-size: 1.4rem; color: var(--verde-escuro); margin-bottom: 0.5rem; }
+        .card-info p { font-size: 0.95rem; margin: 0 0 1rem 0; text-align: left; }
+        .btn-reserva { display: inline-block; background-color: var(--verde-folha); color: var(--marrom-escuro); padding: 0.6rem 1.2rem; border-radius: 20px; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; }
+        .card-acomodacao:hover .btn-reserva { background-color: var(--verde-escuro); color: var(--branco); }
+        .destaque-cabana { border-color: var(--marrom-claro); position: relative; }
+        .destaque-cabana::before { content: "EXCLUSIVA"; position: absolute; top: 15px; right: 15px; background-color: var(--marrom-claro); color: var(--branco); padding: 0.4rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.8rem; z-index: 5; }
+
+        .btn-topo {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background-color: var(--verde-folha);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(124, 179, 66, 0.5);
+            transition: all 0.3s;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+     .btn-topo.mostrar {
+            opacity: 1;
+            visibility: visible;
+        }
+     .btn-topo:hover {
+            background-color: var(--verde-escuro);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(124, 179, 66, 0.7);
+        }
+     .btn-topo svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--branco);
+        }
+
+        footer { background-color: var(--marrom-escuro); color: var(--creme-fundo); text-align: center; padding: 1.5rem; margin-top: 4rem; }
+        footer p { margin: 0 auto; color: var(--creme-fundo); font-weight: 600; max-width: 1200px; text-align: center; }
+
+        @media (max-width: 768px) {
+            header { justify-content: space-between; padding: 0.8rem 1.5rem; }
+         .logo-header { position: static; }
+         .logo-img { height: 60px; }
+         .menu-toggle { display: flex; position: static; }
+            nav {
+                position: fixed;
+                top: 86px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 86px);
+                background-color: rgba(62, 39, 35, 0.98);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+                margin: 0;
+                transition: left 0.4s ease;
+                backdrop-filter: blur(10px);
+            }
+            nav.active { left: 0; }
+            nav a {
+                font-size: 1.3rem;
+                padding: 1.2rem 2rem;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(124, 179, 66, 0.2);
+            }
+            nav a:hover, nav a.active {
+                background-color: rgba(124, 179, 66, 0.1);
+                border-bottom: 1px solid rgba(124, 179, 66, 0.2);
+            }
+         .container { padding: 0 1rem; margin-top: 6rem; }
+            h2 { font-size: 2rem; }
+            .acomodacoes-grid { grid-template-columns: 1fr; }
+         .btn-topo { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+         .btn-topo svg { width: 22px; height: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-header">
+            <a href="index.html" class="logo-link">
+                <img src="img/index/logo-sem-fundo.png" alt="Logo Sítio Serra Bonita" class="logo-img">
+            </a>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="navMenu">
+            <a href="quemSomos.html">Quem somos</a>
+            <a href="servicos.html" class="active">Acomodações</a>
+            <a href="galeria.html">Galeria</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <h2>Nossas Acomodações</h2>
+            <p class="subtitulo">Chalés com vista para o lago</p>
+            <p>
+                Todas as acomodações são equipadas para proporcionar conforto e contato com a natureza. 
+                Clique em cada uma para ver mais detalhes e reservar no Airbnb.
+            </p>
+
+            <div class="acomodacoes-grid">
+                <!-- CHALÉ 1 -->
+                <a href="https://www.airbnb.com.br/rooms/44341160?_set_bev_on_new_domain=1776659750_EAY2ZkYmYyZjcwZW&set_everest_cookie_on_new_domain=1776659750.EANTZkZThhYTZlYjczMz.58v3YpXHEBVGDjSjVdjCho07gfWSqYuLNf-_k1zRUdM&source_impression_id=p3_1776659794_P3h2n8iRitUvdad1" target="_blank" class="card-acomodacao">
+                    <img src="img/acomodacao/chale1.jpg" alt="Chalé Araucária">
+                    <div class="card-info">
+                        <h3>Chalé 1</h3>
+                        <p>Até 3 pessoas | 1 quarto | Ao lado do Playground</p>
+                        <span class="btn-reserva">Ver no Airbnb →</span>
+                    </div>
+                </a>
+
+                <!-- CHALÉ 2 -->
+                <a href="https://www.airbnb.com.br/rooms/45163925?_set_bev_on_new_domain=1776659750_EAY2ZkYmYyZjcwZW&set_everest_cookie_on_new_domain=1776659750.EANTZkZThhYTZlYjczMz.58v3YpXHEBVGDjSjVdjCho07gfWSqYuLNf-_k1zRUdM" target="_blank" class="card-acomodacao">
+                    <img src="img/acomodacao/chale2.jpeg" alt="Chalé Ipê Amarelo">
+                    <div class="card-info">
+                        <h3>Chalé 2</h3>
+                        <p>Até 3 pessoas | 2 quartos | Varanda reservada</p>
+                        <span class="btn-reserva">Ver no Airbnb →</span>
+                    </div>
+                </a>
+
+                <!-- CHALÉ 3 -->
+                <a href="https://www.airbnb.com.br/rooms/584086363462392176?_set_bev_on_new_domain=1776659750_EAY2ZkYmYyZjcwZW&set_everest_cookie_on_new_domain=1776659750.EANTZkZThhYTZlYjczMz.58v3YpXHEBVGDjSjVdjCho07gfWSqYuLNf-_k1zRUdM&source_impression_id=p3_1776659751_P3BGzEMW1vBs5NK3" target="_blank" class="card-acomodacao">
+                    <img src="img/acomodacao/chale3.jpeg" alt="Chalé Manacá">
+                    <div class="card-info">
+                        <h3>Chalé 3</h3>
+                        <p>Até 4 pessoas | 2 quarto | Sobrado</p>
+                        <span class="btn-reserva">Ver no Airbnb →</span>
+                    </div>
+                </a>
+
+                <!-- CHALÉ 4 -->
+                <a href="https://www.airbnb.com.br/rooms/584839431094795545?guests=1&adults=1&viralityEntryPoint=1&s=76" target="_blank" class="card-acomodacao">
+                    <img src="img/acomodacao/chale4.jpg" alt="Chalé Quaresmeira">
+                    <div class="card-info">
+                        <h3>Chalé 4</h3>
+                        <p>Até 2 pessoas | 1 quartos | Vista pro lago</p>
+                        <span class="btn-reserva">Ver no Airbnb →</span>
+                    </div>
+                </a>
+
+                <!-- CHALÉ 5 -->
+                <a href="https://www.airbnb.com.br/rooms/1438393164741005719?adults=1&location=S%C3%A3o%20Louren%C3%A7o%20da%20Serra%2C%20Brazil&search_mode=regular_search&check_in=2025-11-29&check_out=2025-12-04&children=0&infants=0&pets=0&source_impression_id=p3_1762626039_P38HVcY-Q6nQpnrr&previous_page_section_name=1001" target="_blank" class="card-acomodacao">
+                    <img src="img/acomodacao/chale5.jpg" alt="Chalé Cedro">
+                    <div class="card-info">
+                        <h3>Chalé 5</h3>
+                        <p>Até 2 pessoas | 1 quarto | Banheira com Hidro</p>
+                        <span class="btn-reserva">Ver no Airbnb →</span>
+                    </div>
+                </a>
+
+                <!-- CHALÉ 6 -->
+                <a href="https://www.airbnb.com.br/rooms/1001439399854254099?check_in=2024-06-01&check_out=2024-09-01&guests=1&adults=1&viralityEntryPoint=1&s=76&source_impression_id=p3_1776659515_P3XN-qfh93cUWk-y" target="_blank" class="card-acomodacao">
+                    <img src="img/acomodacao/chale6.jpg" alt="Chalé Jequitibá">
+                    <div class="card-info">
+                        <h3>Chalé 6</h3>
+                        <p>Até 2 pessoas | 1 quartos | Vista panorâmica</p>
+                        <span class="btn-reserva">Ver no Airbnb →</span>
+                    </div>
+                </a>
+
+                <!-- CHALÉ 7 -->
+                <a href="https://www.airbnb.com.br/rooms/1001479783719854095?guests=1&adults=1&viralityEntryPoint=1&s=76" target="_blank" class="card-acomodacao">
+                    <img src="img/acomodacao/chale7.jpg" alt="Chalé Pau Brasil">
+                    <div class="card-info">
+                        <h3>Chalé 7</h3>
+                        <p>Até 2 pessoas | 1 quarto | Vista panorâmica</p>
+                        <span class="btn-reserva">Ver no Airbnb →</span>
+                    </div>
+                </a>
+
+                <!-- CABANA -->
+                <a href="https://www.airbnb.com.br/rooms/SEU_ID_AQUI" target="_blank" class="card-acomodacao destaque-cabana">
+                    <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=800" alt="Cabana da Serra">
+                    <div class="card-info">
+                        <h3>Cabana da Serra</h3>
+                        <p>Até 5 pessoas | 2 quartos | Exclusiva</p>
+                        <span class="btn-reserva">Ver no Airbnb →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- BOTÃO VOLTAR AO TOPO -->
+    <a href="#" class="btn-topo" aria-label="Voltar ao topo">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4l-8 8h6v8h4v-8h6z"/>
+        </svg>
+    </a>
+
+    <footer>
+        <p>© 2026 Sítio Serra Bonita - São Lourenço da Serra, SP 🌿</p>
+    </footer>
+
+    <script>
+        // Menu Sanduíche
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Botão voltar ao topo aparece quando rola a página
+        const btnTopo = document.querySelector('.btn-topo');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                btnTopo.classList.add('mostrar');
+            } else {
+                btnTopo.classList.remove('mostrar');
+            }
+        });
+    </script>
+</body>
+</html>
