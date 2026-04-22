@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - Sítio Serra Bonita</title>
@@ -35,16 +35,16 @@
             backdrop-filter: blur(10px);
         }
 
-   .logo-header {
+        .logo-header {
             position: absolute;
             left: 2rem;
             display: flex;
             align-items: center;
             flex-shrink: 0;
         }
-   .logo-link { display: inline-block; transition: transform 0.3s ease; }
-   .logo-link:hover { transform: scale(1.05); }
-   .logo-img { height: 70px; width: auto; display: block; }
+        .logo-link { display: inline-block; transition: transform 0.3s ease; }
+        .logo-link:hover { transform: scale(1.05); }
+        .logo-img { height: 70px; width: auto; display: block; }
 
         nav {
             display: flex;
@@ -65,7 +65,7 @@
         }
         nav a:hover, nav a.active { color: var(--verde-folha); border-bottom: 3px solid var(--verde-folha); }
 
-   .menu-toggle {
+        .menu-toggle {
             display: none;
             flex-direction: column;
             justify-content: space-between;
@@ -79,7 +79,7 @@
             position: absolute;
             right: 2rem;
         }
-   .menu-toggle span {
+        .menu-toggle span {
             display: block;
             height: 3px;
             width: 100%;
@@ -87,17 +87,17 @@
             border-radius: 3px;
             transition: all 0.3s ease;
         }
-   .menu-toggle.active span:nth-child(1) {
+        .menu-toggle.active span:nth-child(1) {
             transform: rotate(45deg) translate(8px, 8px);
         }
-   .menu-toggle.active span:nth-child(2) {
+        .menu-toggle.active span:nth-child(2) {
             opacity: 0;
         }
-   .menu-toggle.active span:nth-child(3) {
+        .menu-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
         }
 
-   .container { max-width: 1100px; margin: 7rem auto 3rem auto; padding: 0 2rem; text-align: center; }
+        .container { max-width: 1100px; margin: 7rem auto 3rem auto; padding: 0 2rem; text-align: center; }
         h2 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--marrom-escuro); margin-bottom: 1.5rem; font-weight: 900; }
         h3 { font-family: 'Merriweather', serif; font-size: 1.8rem; color: var(--verde-escuro); margin: 3rem 0 1.5rem 0; }
         p { font-size: 1.1rem; max-width: 850px; margin: 0 auto 2.5rem auto; color: var(--marrom-claro); }
@@ -119,14 +119,14 @@
             margin-bottom: 0 !important;
         }
        
-   .social-buttons { 
+        .social-buttons { 
             display: flex; 
             justify-content: center; 
             gap: 1.2rem; 
             margin: 2.5rem auto 3rem auto; 
             flex-wrap: wrap;
         }
-   .social-btn {
+        .social-btn {
             width: 60px;
             height: 60px;
             background-color: var(--verde-folha);
@@ -138,17 +138,17 @@
             transition: all 0.3s;
             box-shadow: 0 3px 10px rgba(124, 179, 66, 0.4);
         }
-   .social-btn:hover { 
+        .social-btn:hover { 
             background-color: var(--verde-escuro); 
             transform: translateY(-4px); 
             box-shadow: 0 6px 15px rgba(124, 179, 66, 0.6);
         }
-   .social-btn svg { width: 28px; height: 28px; fill: var(--branco); }
+        .social-btn svg { width: 28px; height: 28px; fill: var(--branco); }
        
-   .mapa-container { border-radius: 16px; overflow: hidden; border: 4px solid var(--verde-folha); box-shadow: 0 6px 20px rgba(62, 39, 35, 0.3); max-width: 800px; margin: 0 auto; }
-   .mapa-container iframe { display: block; width: 100%; }
+        .mapa-container { border-radius: 16px; overflow: hidden; border: 4px solid var(--verde-folha); box-shadow: 0 6px 20px rgba(62, 39, 35, 0.3); max-width: 800px; margin: 0 auto; }
+        .mapa-container iframe { display: block; width: 100%; }
 
-   .btn-topo {
+        .btn-topo {
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -166,16 +166,16 @@
             opacity: 0;
             visibility: hidden;
         }
-   .btn-topo.mostrar {
+        .btn-topo.mostrar {
             opacity: 1;
             visibility: visible;
         }
-   .btn-topo:hover {
+        .btn-topo:hover {
             background-color: var(--verde-escuro);
             transform: translateY(-5px);
             box-shadow: 0 6px 20px rgba(124, 179, 66, 0.7);
         }
-   .btn-topo svg {
+        .btn-topo svg {
             width: 24px;
             height: 24px;
             fill: var(--branco);
@@ -186,9 +186,9 @@
         
         @media (max-width: 768px) {
             header { justify-content: space-between; padding: 0.8rem 1.5rem; }
-       .logo-header { position: static; }
-       .logo-img { height: 60px; }
-       .menu-toggle { display: flex; position: static; }
+            .logo-header { position: static; }
+            .logo-img { height: 60px; }
+            .menu-toggle { display: flex; position: static; }
             nav {
                 position: fixed;
                 top: 86px;
@@ -215,15 +215,15 @@
                 background-color: rgba(124, 179, 66, 0.1);
                 border-bottom: 1px solid rgba(124, 179, 66, 0.2);
             }
-       .container { padding: 0 1rem; margin-top: 6rem; }
+            .container { padding: 0 1rem; margin-top: 6rem; }
             h2 { font-size: 2rem; }
-       .contato-item { flex-direction: column; align-items: center; text-align: center; }
-       .contato-item p { text-align: center; }
-       .social-buttons { gap: 1rem; }
-       .social-btn { width: 55px; height: 55px; }
-       .social-btn svg { width: 24px; height: 24px; }
-       .btn-topo { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-       .btn-topo svg { width: 22px; height: 22px; }
+            .contato-item { flex-direction: column; align-items: center; text-align: center; }
+            .contato-item p { text-align: center; }
+            .social-buttons { gap: 1rem; }
+            .social-btn { width: 55px; height: 55px; }
+            .social-btn svg { width: 24px; height: 24px; }
+            .btn-topo { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+            .btn-topo svg { width: 22px; height: 22px; }
         }
     </style>
 </head>
@@ -259,8 +259,8 @@
                     <span class="contato-icone">📧</span>
                     <div>
                         <strong>Email:</strong>
-                        <p>taniaribeiroqueiroz@gmail.com - Tânia (Anfitriã)</p><br>
-                        <p>danielrampim@gmail.com - Daniel (Anfitrião)</p>
+                        <p class="contato-linha">taniaribeiroqueiroz@gmail.com - Tânia (Anfitriã)</p>
+                        <p class="contato-linha">danielrampim@gmail.com - Daniel (Anfitrião)</p>
                     </div>
                 </div>
 
@@ -268,9 +268,9 @@
                     <span class="contato-icone">📞</span>
                     <div>
                         <strong>Telefone/WhatsApp:</strong>
-                        <p>(11) 99514-7463 - Tânia (Anfitriã)</p><br>
-                        <p>(11) 94023-4155 - Daniel (Anfitrião)</p><br>
-                        <p>(11) 99791-4281 - Osni (Anfitrião)</p>
+                        <p class="contato-linha">(11) 99514-7463 - Tânia (Anfitriã)</p>
+                        <p class="contato-linha">(11) 99514-7463 - Daniel (Anfitrião)</p>
+                        <p class="contato-linha">(11) 99514-7463 - Osni (Anfitrião)</p>
                     </div>
                 </div>
 
@@ -291,7 +291,7 @@
                 </div>
             </div>
 
-            <!-- BOTÕES SOCIAIS -->
+ <!-- BOTÕES SOCIAIS -->
             <div class="social-buttons">
                 <a href="https://www.instagram.com/sitioserrabonita?utm_medium=copy_link" target="_blank" class="social-btn" aria-label="Instagram">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
