@@ -1,449 +1,770 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quem Somos - Sítio Serra Bonita</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        :root {
-            --verde-folha: #7CB342;
-            --verde-escuro: #558B2F;
-            --marrom-claro: #8D6E63;
-            --marrom-escuro: #3E2723;
-            --creme-fundo: #F5F5DC;
-            --branco: #FFFFFF;
-        }
-        body { font-family: 'Nunito', sans-serif; background-color: var(--creme-fundo); color: var(--marrom-escuro); line-height: 1.7; overflow-x: hidden; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      :root {
+        --verde-folha: #7cb342;
+        --verde-escuro: #558b2f;
+        --marrom-claro: #8d6e63;
+        --marrom-escuro: #3e2723;
+        --creme-fundo: #f5f5dc;
+        --branco: #ffffff;
+      }
+      body {
+        font-family: "Nunito", sans-serif;
+        background-color: var(--creme-fundo);
+        color: var(--marrom-escuro);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
 
-        header {
-            background-color: rgba(62, 39, 35, 0.95);
-            padding: 0.8rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 3px 10px rgba(62, 39, 35, 0.3);
-            border-bottom: 4px solid var(--verde-folha);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
+      header {
+        background-color: rgba(62, 39, 35, 0.95);
+        padding: 0.8rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 3px 10px rgba(62, 39, 35, 0.3);
+        border-bottom: 4px solid var(--verde-folha);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      }
 
-   .logo-header {
-            position: absolute;
-            left: 2rem;
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-        }
-   .logo-link { display: inline-block; transition: transform 0.3s ease; }
-   .logo-link:hover { transform: scale(1.05); }
-   .logo-img { height: 70px; width: auto; display: block; }
+      .logo-header {
+        position: absolute;
+        left: 2rem;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
+      .logo-link {
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+      .logo-link:hover {
+        transform: scale(1.05);
+      }
+      .logo-img {
+        height: 70px;
+        width: auto;
+        display: block;
+      }
 
-        nav {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-            justify-content: center;
-        }
-        nav a {
-            color: var(--creme-fundo);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            padding: 0.5rem 0;
-            border-bottom: 3px solid transparent;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        nav a:hover, nav a.active { color: var(--verde-folha); border-bottom: 3px solid var(--verde-folha); }
+      nav {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+        justify-content: center;
+      }
+      nav a {
+        color: var(--creme-fundo);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+        padding: 0.5rem 0;
+        border-bottom: 3px solid transparent;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      nav a:hover,
+      nav a.active {
+        color: var(--verde-folha);
+        border-bottom: 3px solid var(--verde-folha);
+      }
 
-   .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 22px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-            position: absolute;
-            right: 2rem;
-        }
-   .menu-toggle span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: var(--creme-fundo);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-   .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-   .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-   .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 22px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+        position: absolute;
+        right: 2rem;
+      }
+      .menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: var(--creme-fundo);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      }
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
 
-   .container { max-width: 1200px; margin: 7rem auto 3rem auto; padding: 0 2rem; }
-        h2 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--marrom-escuro); margin-bottom: 1.5rem; font-weight: 900; text-align: center; }
-        h3 { font-family: 'Merriweather', serif; font-size: 1.8rem; color: var(--verde-escuro); margin: 3rem 0 1.5rem 0; text-align: center; }
-        p { font-size: 1.1rem; color: var(--marrom-claro); margin-bottom: 1.5rem; }
-   .txtQuemSomos { text-align: center; max-width: 850px; margin: 0 auto 3rem auto; font-size: 1.15rem; }
-        
-   .fundadores-grid {
-            display: grid;
-            grid-template-columns: 0.6fr 1.4fr;
-            gap: 2rem;
-            align-items: center;
-            margin: 3rem 0;
-            background-color: var(--branco);
-            padding: 1.5rem;
-            border-radius: 16px;
-            border: 3px solid var(--verde-folha);
-        }
-   .fundadores-img img { 
-            width: 100%; 
-            max-height: 370px;
-            object-fit: cover;
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2); 
-            display: block;
-        }
-   .fundadores-texto h4 { font-family: 'Merriweather', serif; font-size: 1.6rem; color: var(--marrom-escuro); margin-bottom: 1rem; }
-   .fundadores-texto p { text-align: justify; margin-bottom: 0.8rem; font-size: 1.02rem; line-height: 1.6; }
-   .fonte-bio { font-size: 0.85rem; color: var(--marrom-claro); font-style: italic; text-align: right; margin-top: 1rem; }
+      .container {
+        max-width: 1200px;
+        margin: 7rem auto 3rem auto;
+        padding: 0 2rem;
+      }
+      h2 {
+        font-family: "Merriweather", serif;
+        font-size: 2.8rem;
+        color: var(--marrom-escuro);
+        margin-bottom: 1.5rem;
+        font-weight: 900;
+        text-align: center;
+      }
+      h3 {
+        font-family: "Merriweather", serif;
+        font-size: 1.8rem;
+        color: var(--verde-escuro);
+        margin: 3rem 0 1.5rem 0;
+        text-align: center;
+      }
+      p {
+        font-size: 1.1rem;
+        color: var(--marrom-claro);
+        margin-bottom: 1.5rem;
+      }
+      .txtQuemSomos {
+        text-align: center;
+        max-width: 850px;
+        margin: 0 auto 3rem auto;
+        font-size: 1.15rem;
+      }
 
-   .escola-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin: 3rem 0;
-            background-color: var(--branco);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 3px solid var(--verde-folha);
-        }
-   .escola-texto h4 { font-family: 'Merriweather', serif; font-size: 1.6rem; color: var(--verde-escuro); margin-bottom: 1rem; }
-   .escola-texto p { text-align: justify; margin-bottom: 1rem; font-size: 1.05rem; }
-   .escola-img img { 
-            width: 100%; 
-            height: auto;
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2); 
-        }
+      .fundadores-grid {
+        display: grid;
+        grid-template-columns: 0.6fr 1.4fr;
+        gap: 2rem;
+        align-items: center;
+        margin: 3rem 0;
+        background-color: var(--branco);
+        padding: 1.5rem;
+        border-radius: 16px;
+        border: 3px solid var(--verde-folha);
+      }
+      .fundadores-img img {
+        width: 100%;
+        max-height: 370px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
+        display: block;
+      }
+      .fundadores-texto h4 {
+        font-family: "Merriweather", serif;
+        font-size: 1.6rem;
+        color: var(--marrom-escuro);
+        margin-bottom: 1rem;
+      }
+      .fundadores-texto p {
+        text-align: justify;
+        margin-bottom: 0.8rem;
+        font-size: 1.02rem;
+        line-height: 1.6;
+      }
+      .fonte-bio {
+        font-size: 0.85rem;
+        color: var(--marrom-claro);
+        font-style: italic;
+        text-align: right;
+        margin-top: 1rem;
+      }
 
-   .novelas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2.5rem; margin: 3rem 0; }
-   .novela-card { 
-            background-color: var(--branco); 
-            border-radius: 16px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 12px rgba(62, 39, 35, 0.15); 
-            border: 3px solid var(--verde-folha); 
-            display: flex; 
-            gap: 0; 
-        }
-    .novela-card p{
+      .escola-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 3rem;
+        align-items: center;
+        margin: 3rem 0;
+        background-color: var(--branco);
+        padding: 2.5rem;
+        border-radius: 16px;
+        border: 3px solid var(--verde-folha);
+      }
+      .escola-texto h4 {
+        font-family: "Merriweather", serif;
+        font-size: 1.6rem;
+        color: var(--verde-escuro);
+        margin-bottom: 1rem;
+      }
+      .escola-texto p {
+        text-align: justify;
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+      }
+      .escola-img img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
+      }
+
+      .novelas-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 2.5rem;
+        margin: 3rem 0;
+      }
+      .novela-card {
+        background-color: var(--branco);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(62, 39, 35, 0.15);
+        border: 3px solid var(--verde-folha);
+        display: flex;
+        gap: 0;
+      }
+      .novela-card p {
         text-align: justify !important;
         margin-left: 120px;
         padding-left: 12px;
-    }
+      }
 
-   .novela-card img { 
-            width: 180px; 
-            height: 260px; 
-            object-fit: cover; 
-            flex-shrink: 0; 
-            border-radius: 8px;
-            margin: 1.2rem 0 1.2rem 1.2rem;
-            box-shadow: 0 2px 8px rgba(62, 39, 35, 0.2);
-        }
-   .novela-info { padding: 1.5rem 1.5rem 1.5rem 0.5rem; display: flex; flex-direction: column; justify-content: center; }
-   .novela-info h4 { font-family: 'Merriweather', serif; font-size: 1.3rem; color: var(--verde-escuro); margin-bottom: 0.8rem; }
-   .novela-info p { font-size: 0.95rem; margin: 0 0 0.8rem 0; text-align: left; line-height: 1.6; }
-   .novela-ano { display: inline-block; background-color: var(--verde-folha); color: var(--marrom-escuro); padding: 0.3rem 0.8rem; border-radius: 15px; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.8rem; width: fit-content; }
+      .novela-card img {
+        width: 180px;
+        height: 260px;
+        object-fit: cover;
+        flex-shrink: 0;
+        border-radius: 8px;
+        margin: 1.2rem 0 1.2rem 1.2rem;
+        box-shadow: 0 2px 8px rgba(62, 39, 35, 0.2);
+      }
+      .novela-info {
+        padding: 1.5rem 1.5rem 1.5rem 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .novela-info h4 {
+        font-family: "Merriweather", serif;
+        font-size: 1.3rem;
+        color: var(--verde-escuro);
+        margin-bottom: 0.8rem;
+      }
+      .novela-info p {
+        font-size: 0.95rem;
+        margin: 0 0 0.8rem 0;
+        text-align: left;
+        line-height: 1.6;
+      }
+      .novela-ano {
+        display: inline-block;
+        background-color: var(--verde-folha);
+        color: var(--marrom-escuro);
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+        width: fit-content;
+      }
 
-   /* DIV DA OLARIA - NOVA */
-   .olaria-grid {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 3rem;
-            align-items: center;
-            margin: 3rem 0;
-            background-color: var(--branco);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 3px solid var(--verde-folha);
-        }
-   .olaria-img img { 
-            width: 100%; 
-            height: 360px !important;
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2); 
-            display: block;
-        }
-   .olaria-texto p { text-align: justify; margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.7; }
+      .olaria-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 3rem;
+        align-items: center;
+        margin: 3rem 0;
+        background-color: var(--branco);
+        padding: 2.5rem;
+        border-radius: 16px;
+        border: 3px solid var(--verde-folha);
+      }
+      .olaria-img img {
+        width: 100%;
+        height: 360px !important;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
+        display: block;
+      }
+      .olaria-texto p {
+        text-align: justify;
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
 
-   .btn-topo {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 55px;
-            height: 55px;
-            background-color: var(--verde-folha);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(124, 179, 66, 0.5);
-            transition: all 0.3s;
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-        }
-   .btn-topo.mostrar {
-            opacity: 1;
-            visibility: visible;
-        }
-   .btn-topo:hover {
-            background-color: var(--verde-escuro);
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(124, 179, 66, 0.7);
-        }
-   .btn-topo svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--branco);
-        }
+      /* DIV HISTÓRIA DO MUNICÍPIO - IMAGEM SEM CORTAR */
+      .historia-municipio-grid {
+        display: grid;
+        grid-template-columns: 0.7fr 1.3fr;
+        gap: 2.5rem;
+        align-items: start;
+        margin: 3rem 0;
+        background-color: var(--branco);
+        padding: 2.5rem;
+        border-radius: 16px;
+        border: 3px solid var(--verde-folha);
+      }
+      .historia-img-unica {
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 120px;
+      }
+      .historia-img-unica img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
+        display: block;
+        background-color: var(--creme-fundo);
+      }
+      .fonte-img {
+        font-size: 0.75rem;
+        color: var(--marrom-claro);
+        font-style: italic;
+        text-align: center;
+        margin-top: 0.4rem;
+        margin-bottom: 0;
+      }
+      .historia-texto p {
+        text-align: justify;
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+      .fonte-historia {
+        font-size: 0.85rem;
+        color: var(--marrom-claro);
+        font-style: italic;
+        text-align: right;
+        margin-top: 1.5rem;
+      }
 
-        footer { background-color: var(--marrom-escuro); color: var(--creme-fundo); text-align: center; padding: 1.5rem; margin-top: 4rem; }
-        footer p { margin: 0 auto; color: var(--creme-fundo); font-weight: 600; max-width: 1200px; text-align: center; }
+      .btn-topo {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 55px;
+        height: 55px;
+        background-color: var(--verde-folha);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(124, 179, 66, 0.5);
+        transition: all 0.3s;
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .btn-topo.mostrar {
+        opacity: 1;
+        visibility: visible;
+      }
+      .btn-topo:hover {
+        background-color: var(--verde-escuro);
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(124, 179, 66, 0.7);
+      }
+      .btn-topo svg {
+        width: 24px;
+        height: 24px;
+        fill: var(--branco);
+      }
 
-        @media (max-width: 768px) {
-            header { justify-content: space-between; padding: 0.8rem 1.5rem; }
-       .logo-header { position: static; }
-       .logo-img { height: 60px; }
-       .menu-toggle { display: flex; position: static; }
-            nav {
-                position: fixed;
-                top: 86px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 86px);
-                background-color: rgba(62, 39, 35, 0.98);
-                flex-direction: column;
-                gap: 0;
-                padding: 2rem 0;
-                margin: 0;
-                transition: left 0.4s ease;
-                backdrop-filter: blur(10px);
-            }
-            nav.active { left: 0; }
-            nav a {
-                font-size: 1.3rem;
-                padding: 1.2rem 2rem;
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid rgba(124, 179, 66, 0.2);
-            }
-            nav a:hover, nav a.active {
-                background-color: rgba(124, 179, 66, 0.1);
-                border-bottom: 1px solid rgba(124, 179, 66, 0.2);
-            }
-       .container { padding: 0 1rem; margin-top: 6rem; }
-            h2 { font-size: 2rem; }
-       .fundadores-grid,.escola-grid,.olaria-grid { grid-template-columns: 1fr; }
-       .fundadores-img img { max-height: 320px; }
-       .novelas-grid { grid-template-columns: 1fr; }
-       .novela-card { flex-direction: column; }
-       .novela-card img { width: calc(100% - 2.4rem); height: 280px; margin: 1.2rem auto 0 auto; }
-       .novela-info { padding: 1rem 1.5rem 1.5rem 1.5rem; }
-       .btn-topo { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-       .btn-topo svg { width: 22px; height: 22px; }
+      footer {
+        background-color: var(--marrom-escuro);
+        color: var(--creme-fundo);
+        text-align: center;
+        padding: 1.5rem;
+        margin-top: 4rem;
+      }
+      footer p {
+        margin: 0 auto;
+        color: var(--creme-fundo);
+        font-weight: 600;
+        max-width: 1200px;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        header {
+          justify-content: space-between;
+          padding: 0.8rem 1.5rem;
         }
+        .logo-header {
+          position: static;
+        }
+        .logo-img {
+          height: 60px;
+        }
+        .menu-toggle {
+          display: flex;
+          position: static;
+        }
+        nav {
+          position: fixed;
+          top: 86px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 86px);
+          background-color: rgba(62, 39, 35, 0.98);
+          flex-direction: column;
+          gap: 0;
+          padding: 2rem 0;
+          margin: 0;
+          transition: left 0.4s ease;
+          backdrop-filter: blur(10px);
+        }
+        nav.active {
+          left: 0;
+        }
+        nav a {
+          font-size: 1.3rem;
+          padding: 1.2rem 2rem;
+          width: 100%;
+          text-align: center;
+          border-bottom: 1px solid rgba(124, 179, 66, 0.2);
+        }
+        nav a:hover,
+        nav a.active {
+          background-color: rgba(124, 179, 66, 0.1);
+          border-bottom: 1px solid rgba(124, 179, 66, 0.2);
+        }
+        .container {
+          padding: 0 1rem;
+          margin-top: 6rem;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+        .fundadores-grid,
+        .escola-grid,
+        .olaria-grid,
+        .historia-municipio-grid {
+          grid-template-columns: 1fr;
+        }
+        .fundadores-img img {
+          max-height: 320px;
+        }
+        .historia-img-unica {
+          position: static;
+        }
+        .historia-img-unica img {
+          max-height: 500px;
+        }
+        .novelas-grid {
+          grid-template-columns: 1fr;
+        }
+        .novela-card {
+          flex-direction: column;
+        }
+        .novela-card img {
+          width: calc(100% - 2.4rem);
+          height: 280px;
+          margin: 1.2rem auto 0 auto;
+        }
+        .novela-info {
+          padding: 1rem 1.5rem 1.5rem 1.5rem;
+        }
+        .historia-municipio-grid {
+          padding: 1.5rem;
+        }
+        .btn-topo {
+          width: 50px;
+          height: 50px;
+          bottom: 20px;
+          right: 20px;
+        }
+        .btn-topo svg {
+          width: 22px;
+          height: 22px;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="logo-header">
-            <a href="index.html" class="logo-link">
-                <img src="img/index/logo-sem-fundo.png" alt="Logo Sítio Serra Bonita" class="logo-img">
-            </a>
-        </div>
+      <div class="logo-header">
+        <a href="index.html" class="logo-link">
+          <img
+            src="img/index/logo-sem-fundo.png"
+            alt="Logo Sítio Serra Bonita"
+            class="logo-img"
+          />
+        </a>
+      </div>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-        <nav id="navMenu">
-            <a href="quemSomos.html" class="active">Quem somos</a>
-            <a href="servicos.html">Acomodações</a>
-            <a href="galeria.html">Galeria</a>
-            <a href="contato.html">Contato</a>
-        </nav>
+      <nav id="navMenu">
+        <a href="quemSomos.html" class="active">Quem somos</a>
+        <a href="servicos.html">Acomodações</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="contato.html">Contato</a>
+      </nav>
     </header>
 
     <main>
-        <section class="container">
-            <h2>Nossa História</h2>
-            <p class="txtQuemSomos">
-                <big><strong>O Sítio Serra Bonita nasceu do sonho de dois educadores apaixonados pela natureza e pela cultura brasileira.</strong></big>
+      <section class="container">
+        <h2>Nossa História</h2>
+        <p class="txtQuemSomos">
+          <big
+            ><strong
+              >O Sítio Serra Bonita nasceu do sonho de dois educadores
+              apaixonados pela natureza e pela cultura brasileira.</strong
+            ></big
+          >
+        </p>
+
+        <div class="fundadores-grid">
+          <div class="fundadores-img">
+            <img
+              src="img/quemSomos/marianerea.jpeg"
+              alt="Maria Nérea Cortellazzi Rampim"
+            />
+          </div>
+          <div class="fundadores-texto">
+            <h4>Maria Nérea Cortellazzi Rampim</h4>
+            <p>
+              &ensp; &ensp; Professora e poetisa. Nasceu em Capivari, em 1922.
+              Filha de José Cortellazzi e de Maria Antonia Belomo Cortellazzi.
+              Casou-se em 1946, com o professor Luiz Rampim, nascido em Tietê,
+              em 1923. Sendo filho de Jacinto Ferrucho Rampim e Eduarda Stefani
+              Rampim, ambos filhos de pais italianos imigrantes, tendo os filhos
+              Daniel e Maria Aparecida.
             </p>
+            <p>
+              &ensp; &ensp; Empregava múltiplos codinomes literários na
+              atribuição de suas composições poéticas e chancelar a autoria de
+              sua obra versificada e textos líricos, como: M. Nérea, Virgína de
+              Lande e Flor de Agreste. Publicou diversos livros como “Férias de
+              Dezembro” (poesias) e diversos outros, pela editora Santo Antônio.
+            </p>
+            <p>
+              &ensp; &ensp; Maria Nérea faleceu em 2000, aos 78 anos de idade,
+              enquanto Luiz faleceu em 1995, aos 72 anos de idade.
+            </p>
+          </div>
+        </div>
 
-            <div class="fundadores-grid">
-                <div class="fundadores-img">
-                    <img src="img/quemSomos/marianerea.jpeg" alt="Maria Nérea Cortellazzi Rampim">
-                </div>
-                <div class="fundadores-texto">
-                    <h4>Maria Nérea Cortellazzi Rampim</h4>
-                    <p>
-                        &ensp; &ensp; Professora e poetisa. Nasceu em Capivari, em 1922. Filha de José Cortellazzi 
-                        e de Maria Antonia Belomo Cortellazzi. 
-                        Casou-se em 1946, com o professor Luiz Rampim, nascido em Tietê, em 1923.
-                        Sendo filho de Jacinto Ferrucho Rampim
-                         e Eduarda Stefani Rampim,
-                        ambos filhos de pais italianos imigrantes, tendo os filhos Daniel e Maria Aparecida.
-                    </p>
-                    <p>
-                        &ensp; &ensp; Empregava múltiplos codinomes literários na atribuição de suas composições poéticas
-                         e chancelar a autoria de sua obra versificada e textos líricos, como: M. Nérea, 
-                        Virgína de Lande e Flor de Agreste. Publicou diversos livros como “Férias de Dezembro” 
-                        (poesias) e diversos outros, pela editora Santo Antônio.
-                    </p>
-                    <p>
-                        &ensp; &ensp; Maria Nérea faleceu em 2000, aos 78 anos de idade, enquanto Luiz faleceu em 1995, aos 
-                        72 anos de idade. 
-                    </p>
-                </div>
+        <h3>E. E. Maria Nérea Rampim</h3>
+        <div class="escola-grid">
+          <div class="escola-texto">
+            <h4>Legado na Educação</h4>
+            <p>
+              &ensp; &ensp;A Escola Municipal foi fundada em homenagem a Maria
+              Nérea C. Rampim, situada em São Lourenço da Serra, SP. É uma
+              instituição de ensino fundamental com mais de 20 anos de atuação,
+              fundada em 2002.
+            </p>
+            <p>
+              &ensp; &ensp;A escola atende anos iniciais, EJA e conta com pátio
+              e quadra, com atividades como o Dia do Desafio. Possui quadra
+              esportiva, internet banda larga, pátio coberto e alimentação.
+            </p>
+            <p>
+              &ensp; &ensp;Contando com parcerias em atividades educativas com o
+              SESI/SESC, a escola é ativa na comunidade local, realizando
+              eventos como o "Dia do Desafio" e formaturas com o apoio da
+              prefeitura de São Lourenço da Serra.
+            </p>
+          </div>
+          <div class="escola-img">
+            <img
+              src="img/quemSomos/escolamarianerea.jpg"
+              alt="Escola Maria Nérea Rampim"
+            />
+          </div>
+        </div>
+
+        <h3>Um Cenário de Novelas</h3>
+        <div class="novelas-grid">
+          <div class="novela-card">
+            <img
+              src="img/quemSomos/meu_pe_de_laranja_lima.jpg"
+              alt="Meu Pé de Laranja Lima 1980"
+            />
+            <div class="novela-info">
+              <span class="novela-ano">1980 - 1981</span>
+              <h4>Meu Pé de Laranja Lima</h4>
+              <p>
+                &ensp; &ensp;Baseada no romance de José Mauro de Vasconcelos,
+                foi produzida pela Band. &ensp; &ensp;A história de Zezé, o
+                menino que encontra companheirismo em um pé de laranja lima,
+                teve várias cenas gravadas nos jardins e caminhos do sítio.
+              </p>
             </div>
+          </div>
 
-            <h3>E. E. Maria Nérea Rampim</h3>
-            <div class="escola-grid">
-                <div class="escola-texto">
-                    <h4>Legado na Educação</h4>
-                    <p>
-                         &ensp; &ensp;A Escola Municipal foi fundada em homenagem a Maria Nérea C. Rampim, situada em São Lourenço da Serra, SP. 
-                        É uma instituição de ensino fundamental com mais de 20 anos de atuação, fundada em 2002.
-                    </p>
-                    <p>
-                         &ensp; &ensp;A escola atende anos iniciais, EJA e conta com pátio e quadra, com atividades como o Dia do Desafio. 
-                        Possui quadra esportiva, internet banda larga, pátio coberto e alimentação.
-                    </p>
-                    <p>
-                         &ensp; &ensp;Contando com parcerias em atividades educativas com o SESI/SESC, a escola é ativa na comunidade local, 
-                        realizando eventos como o "Dia do Desafio" e formaturas com o apoio da prefeitura de São Lourenço da Serra.
-                    </p>
-                </div>
-                <div class="escola-img">
-                    <img src="img/quemSomos/escolamarianerea.jpg" alt="Escola Maria Nérea Rampim">
-                </div>
+          <div class="novela-card">
+            <img
+              src="img/quemSomos/o_todo_poderoso.jpg"
+              alt="O Todo Poderoso 1979"
+            />
+            <div class="novela-info">
+              <span class="novela-ano">1979</span>
+              <h4>O Todo Poderoso</h4>
+              <p>
+                &ensp; &ensp;Produzida pela TV Tupi, esta novela também utilizou
+                as paisagens naturais e a arquitetura rústica do sítio como
+                cenário. A produção trouxe visibilidade nacional para São
+                Lourenço da Serra.
+              </p>
             </div>
+          </div>
+        </div>
 
-            <h3>Um Cenário de Novelas</h3>
-            <div class="novelas-grid">
-                <div class="novela-card">
-                    <img src="img/quemSomos/meu_pe_de_laranja_lima.jpg" alt="Meu Pé de Laranja Lima 1980">
-                    <div class="novela-info">
-                        <span class="novela-ano">1980 - 1981</span>
-                        <h4>Meu Pé de Laranja Lima</h4>
-                        <p>
-                             &ensp; &ensp;Baseada no romance de José Mauro de Vasconcelos, foi produzida pela Band.
-                             &ensp; &ensp;A história de Zezé, o menino que encontra companheirismo em um pé de laranja lima,
-                            teve várias cenas gravadas nos jardins e caminhos do sítio.
-                        </p>
-                    </div>
-                </div>
+        <h3>Memória da Olaria</h3>
+        <div class="olaria-grid">
+          <div class="olaria-img">
+            <img
+              src="img/quemSomos/olaria.jpeg"
+              alt="Antiga Olaria do Sítio Serra Bonita"
+            />
+          </div>
+          <div class="olaria-texto">
+            <p>
+              &ensp; &ensp;O Sítio Serra Bonita possui uma história que antecede
+              sua atual vocação como espaço de lazer e contemplação da natureza.
+              Outrora, o local abrigou uma tradicional olaria, onde eram
+              produzidos tijolos e telhas que contribuíram significativamente
+              para a edificação e o desenvolvimento da região. A atividade
+              oleira marcou o primeiro capítulo da trajetória deste espaço.
+            </p>
+            <p>
+              &ensp; &ensp;Com o encerramento das atividades fabris, a área
+              passou por um processo de transformação. Atualmente, o sítio se
+              dedica a receber hóspedes em meio à paisagem da serra, mantendo
+              viva a memória de suas origens. Vestígios das antigas estruturas
+              da olaria foram preservados e integram o cenário, como testemunho
+              do legado e da importância histórica que a produção ceramista
+              representou para a comunidade local.
+            </p>
+          </div>
+        </div>
 
-                <div class="novela-card">
-                    <img src="img/quemSomos/o_todo_poderoso.jpg" alt="O Todo Poderoso 1979">
-                    <div class="novela-info">
-                        <span class="novela-ano">1979</span>
-                        <h4>O Todo Poderoso</h4>
-                        <p>
-                             &ensp; &ensp;Produzida pela TV Tupi, esta novela também utilizou as paisagens naturais e a arquitetura
-                            rústica do sítio como cenário. A produção trouxe visibilidade nacional para São Lourenço da Serra.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DIV DA OLARIA - ÚLTIMA DA PÁGINA -->
-            <h3>Memória da Olaria</h3>
-            <div class="olaria-grid">
-                <div class="olaria-img">
-                    <img src="img/quemSomos/olaria.jpeg" alt="Antiga Olaria do Sítio Serra Bonita">
-                </div>
-                <div class="olaria-texto">
-                    <p>
-                        &ensp; &ensp;O Sítio Serra Bonita possui uma história que antecede sua
-                        atual vocação como espaço de lazer e contemplação da natureza. Outrora, o local abrigou uma tradicional olaria, onde eram
-                        produzidos tijolos e telhas que contribuíram significativamente para a edificação e o desenvolvimento da região. A atividade
-                        oleira marcou o primeiro capítulo da trajetória deste espaço.
-                    </p>
-                    <p>
-                        &ensp; &ensp;Com o encerramento das atividades fabris, a área passou por um processo de transformação. Atualmente, o sítio 
-                        se dedica a receber hóspedes em meio à paisagem da serra, mantendo viva a memória de suas origens. Vestígios das antigas estruturas da olaria foram preservados e integram o cenário, como testemunho do legado e da importância histórica que a produção ceramista representou para a comunidade local.
-                    </p>
-                </div>
-            </div>
-        </section>
+        <h3>História de São Lourenço da Serra</h3>
+        <div class="historia-municipio-grid">
+          <div class="historia-img-unica">
+            <img
+              src="img/quemSomos/memoriasaolourenco.png"
+              alt="Memórias de São Lourenço da Serra"
+            />
+            <p class="fonte-img">Fonte: Memórias de São Lourenço da Serra</p>
+          </div>
+          <div class="historia-texto">
+            <p>
+              <br />&ensp; &ensp;As origens de São Lourenço da Serra remontam ao
+              século XVIII, durante o período bandeirante, quando expedições
+              percorriam os sertões seguindo cursos fluviais em busca de metais
+              e indígenas para cativeiro. As rotas abertas possibilitaram a
+              posterior ocupação por jesuítas e colonos, resultando na fundação
+              dos aldeamentos de Embu e Itapecerica em agosto e setembro de
+              1562.
+            </p>
+            <p>
+              &ensp; &ensp;O povoamento intensificou-se com a vinda de indígenas
+              de Carapicuíba, conduzidos por Afonso Sardinha e doutrinados por
+              Belchior de Pontes. Jesuitas estabeleceram catequese e técnicas
+              agrícolas no território hoje correspondente ao bairro Aldeinha,
+              divisa com Itapecerica da Serra. Em meados do século XIX, Manuel
+              Soares de Borba e Manuel Mendes Rodrigues encontraram ali
+              remanescentes jesuítas e uma capela erigida a São Lourenço, em
+              aldeamento abandonado durante o ciclo do ouro.
+            </p>
+            <p>
+              &ensp; &ensp;Atraídos pela fertilidade do solo, ambos fixaram
+              residência com suas famílias, repartindo as terras. Implementaram
+              lavoura diversificada, pomar, moenda, monjolo e criação de
+              animais. O desenvolvimento do núcleo exigiu a convocação de
+              parentes e aliados, que receberam lotes para edificação de
+              moradias, formando o primitivo “Vilarejo dos Borbas”,
+              posteriormente Bairro de São Lourenço da Serra.
+            </p>
+            <p>
+              &ensp; &ensp;A localidade consolidou-se como entreposto comercial
+              na estrada que ligava Itapecerica a Juquitiba, servindo de pouso
+              para tropeiros e carros de bois. Com a diversificação econômica e
+              o afluxo de habitantes, instituiu-se o distrito em 30 de dezembro
+              de 1953, subordinado a Itapecerica da Serra, com área desmembrada
+              de Embu-Guaçu e Juquitiba. A autonomia político-administrativa foi
+              alcançada em 30 de dezembro de 1991.
+            </p>
+            <p>
+              &ensp; &ensp;Em 1991, plebiscito aprovou a emancipação,
+              inicialmente indeferida pela Assembleia Legislativa. A emancipação
+              efetivou-se em 12 de março de 1992, com o acréscimo “da Serra” ao
+              topônimo em reverência à cidade-mãe, oficializando São Lourenço da
+              Serra.
+            </p>
+            <p class="fonte-historia">
+              Fonte: Câmara Municipal de São Lourenço da Serra
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- BOTÃO VOLTAR AO TOPO -->
     <a href="#" class="btn-topo" aria-label="Voltar ao topo">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 4l-8 8h6v8h4v-8h6z"/>
-        </svg>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4l-8 8h6v8h4v-8h6z" />
+      </svg>
     </a>
 
     <footer>
-        <p>© 2026 Sítio Serra Bonita - São Lourenço da Serra, SP </p>
+      <p>© 2026 Sítio Serra Bonita - São Lourenço da Serra, SP</p>
     </footer>
 
     <script>
-        // Menu Sanduíche
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+      menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
 
-        // Fecha o menu ao clicar em um link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
+      document.querySelectorAll("nav a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.classList.remove("active");
+          navMenu.classList.remove("active");
         });
+      });
 
-        // Botão voltar ao topo aparece quando rola a página
-        const btnTopo = document.querySelector('.btn-topo');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                btnTopo.classList.add('mostrar');
-            } else {
-                btnTopo.classList.remove('mostrar');
-            }
-        });
+      const btnTopo = document.querySelector(".btn-topo");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          btnTopo.classList.add("mostrar");
+        } else {
+          btnTopo.classList.remove("mostrar");
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
