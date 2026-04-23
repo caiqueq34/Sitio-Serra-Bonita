@@ -116,7 +116,7 @@
         }
    .fundadores-img img { 
             width: 100%; 
-            max-height: 400px;
+            max-height: 370px;
             object-fit: cover;
             border-radius: 12px; 
             box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2); 
@@ -155,8 +155,13 @@
             border: 3px solid var(--verde-folha); 
             display: flex; 
             gap: 0; 
-            text-align: justify !important;
         }
+    .novela-card p{
+        text-align: justify !important;
+        margin-left: 120px;
+        padding-left: 12px;
+    }
+
    .novela-card img { 
             width: 180px; 
             height: 260px; 
@@ -166,15 +171,31 @@
             margin: 1.2rem 0 1.2rem 1.2rem;
             box-shadow: 0 2px 8px rgba(62, 39, 35, 0.2);
         }
-        .novela-card p{
-        text-align: justify !important;
-        margin-left: 120px;
-        padding-left: 12px;
-    }
    .novela-info { padding: 1.5rem 1.5rem 1.5rem 0.5rem; display: flex; flex-direction: column; justify-content: center; }
    .novela-info h4 { font-family: 'Merriweather', serif; font-size: 1.3rem; color: var(--verde-escuro); margin-bottom: 0.8rem; }
    .novela-info p { font-size: 0.95rem; margin: 0 0 0.8rem 0; text-align: left; line-height: 1.6; }
    .novela-ano { display: inline-block; background-color: var(--verde-folha); color: var(--marrom-escuro); padding: 0.3rem 0.8rem; border-radius: 15px; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.8rem; width: fit-content; }
+
+   /* DIV DA OLARIA - NOVA */
+   .olaria-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 3rem;
+            align-items: center;
+            margin: 3rem 0;
+            background-color: var(--branco);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 3px solid var(--verde-folha);
+        }
+   .olaria-img img { 
+            width: 100%; 
+            height: 380px !important;
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2); 
+            display: block;
+        }
+   .olaria-texto p { text-align: justify; margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.7; }
 
    .btn-topo {
             position: fixed;
@@ -245,7 +266,7 @@
             }
        .container { padding: 0 1rem; margin-top: 6rem; }
             h2 { font-size: 2rem; }
-       .fundadores-grid,.escola-grid { grid-template-columns: 1fr; }
+       .fundadores-grid,.escola-grid,.olaria-grid { grid-template-columns: 1fr; }
        .fundadores-img img { max-height: 320px; }
        .novelas-grid { grid-template-columns: 1fr; }
        .novela-card { flex-direction: column; }
@@ -294,7 +315,8 @@
                     <p>
                         &ensp; &ensp; Professora e poetisa. Nasceu em Capivari, em 1922. Filha de José Cortellazzi 
                         e de Maria Antonia Belomo Cortellazzi. 
-                        Casou-se em 1946, com o professor Luiz Rampim, filho de Jacinto Ferrucho Rampim
+                        Casou-se em 1946, com o professor Luiz Rampim, nascido em Tietê, em 1923.
+                        Sendo filho de Jacinto Ferrucho Rampim
                          e Eduarda Stefani,
                         ambos filhos de pais italianos imigrantes, tendo os filhos Daniel e Maria Aparecida.
                     </p>
@@ -361,10 +383,21 @@
                 </div>
             </div>
 
-            <p style="margin-top: 2rem; text-align: center;">
-                Antes de ser o paraíso que é hoje, o espaço funcionou como uma fábrica de olaria, produzindo
-                tijolos e telhas que ajudaram a construir a região.
-            </p>
+            <!-- DIV DA OLARIA - ÚLTIMA DA PÁGINA -->
+            <h3>Memória da Olaria</h3>
+            <div class="olaria-grid">
+                <div class="olaria-img">
+                    <img src="img/quemSomos/olaria.jpeg" alt="Antiga Olaria do Sítio Serra Bonita">
+                </div>
+                <div class="olaria-texto">
+                    <p>
+                        &ensp; &ensp;Localizado em São Lourenço da Serra, São Paulo, o Sítio Serra Bonita possui uma história que antecede sua atual vocação como espaço de lazer e contemplação da natureza. Outrora, o local abrigou uma tradicional olaria, onde eram produzidos tijolos e telhas que contribuíram significativamente para a edificação e o desenvolvimento da região. A atividade oleira marcou o primeiro capítulo da trajetória deste espaço.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Com o encerramento das atividades fabris, a área passou por um processo de transformação. Atualmente, o Sítio Serra Bonita se dedica a receber visitantes em meio à paisagem da serra, mantendo viva a memória de suas origens. Vestígios das antigas estruturas da olaria foram preservados e integram o cenário, como testemunho do legado e da importância histórica que a produção ceramista representou para a comunidade local.
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
 
