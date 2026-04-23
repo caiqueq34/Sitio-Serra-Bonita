@@ -146,7 +146,7 @@
     .hero-content p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 4px rgba(0,0,0.5);
             color: var(--branco);
         }
     .btn-hero {
@@ -175,7 +175,7 @@
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 0.5);
             cursor: pointer;
             transition: all 0.3s;
             border: 2px solid var(--branco);
@@ -252,8 +252,98 @@
             margin: 0 auto;
         }
 
+    .sls-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: start;
+            margin: 3rem 0;
+            background-color: var(--branco);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 3px solid var(--verde-folha);
+            text-align: left;
+        }
+    .sls-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
+            display: block;
+        }
+    .img-legenda {
+            font-size: 0.7rem;
+            color: var(--marrom-claro);
+            font-style: italic;
+            margin-top: 0.2rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+    .sls-texto h4 { font-family: 'Merriweather', serif; font-size: 1.6rem; color: var(--verde-escuro); margin-bottom: 1rem; }
+    .sls-texto p { text-align: justify; margin-bottom: 0.8rem; font-size: 1.05rem; color: var(--marrom-escuro); max-width: none; line-height: 1.5; }
+    .sls-texto h5 { font-family: 'Merriweather', serif; font-size: 1.3rem; color: var(--marrom-escuro); margin: 2rem 0 1rem 0; }
+
+    .atracoes-lista {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            padding: 0;
+            margin-top: 2rem;
+        }
+
+    .atracao-card {
+            background: var(--branco);
+            border-radius: 12px;
+            border: 3px solid var(--verde-folha);
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+    .atracao-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(124, 179, 66, 0.4);
+        }
+
+    .atracao-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+    .atracao-info {
+            padding: 1.2rem;
+        }
+
+    .atracao-info strong {
+            color: var(--verde-escuro);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Merriweather', serif;
+        }
+
+    .atracao-info p {
+            font-size: 0.95rem;
+            margin: 0;
+            color: var(--marrom-claro);
+            text-align: left;
+        }
+
+    .fonte-texto {
+            font-size: 0.85rem;
+            color: var(--marrom-claro);
+            font-style: italic;
+            margin-top: 2rem;
+            text-align: right;
+        }
+
         @media (max-width: 1024px) {
-      .estrutura-grid {
+        .estrutura-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -264,13 +354,13 @@
                 padding: 0.8rem 1.5rem;
             }
 
-      .logo-header {
+        .logo-header {
                 position: static;
             }
 
-      .logo-img { height: 60px; }
+        .logo-img { height: 60px; }
 
-      .menu-toggle {
+        .menu-toggle {
                 display: flex;
                 position: static;
             }
@@ -307,14 +397,18 @@
                 border-bottom: 1px solid rgba(124, 179, 66, 0.2);
             }
 
-      .hero-content h1 { font-size: 2.2rem; }
-      .hero-content p { font-size: 1.1rem; }
-      .container { padding: 0 1rem; }
+        .hero-content h1 { font-size: 2.2rem; }
+        .hero-content p { font-size: 1.1rem; }
+        .container { padding: 0 1rem; }
             h2 { font-size: 2rem; }
+        .sls-grid { grid-template-columns: 1fr; }
+        .atracoes-lista {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 640px) {
-      .estrutura-grid {
+        .estrutura-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -352,13 +446,13 @@
                 <a href="servicos.html" class="btn-hero">Conheça as acomodações</a>
             </div>
         </div>
-        <div class="hero-slide" style="background-image: url('img/index/carrossel/2.jpeg');">
-            <div class="hero-content">
-                <h1>Estrutura de Lazer Completa</h1>
-                <p>Piscinas, quadras, trilhas e muito mais</p>
-                <a href="#estrutura" class="btn-hero">Veja a estrutura</a>
-            </div>
-        </div>
+      <div class="hero-slide" style="background-image: url('img/index/carrossel/2.jpeg');">
+    <div class="hero-content">
+        <h1>Estrutura de Lazer Completa</h1>
+        <p>Piscinas, quadras, trilhas e muito mais</p>
+        <a href="#estrutura" class="btn-hero">Veja a estrutura</a>
+    </div>
+</div>
         <div class="hero-slide" style="background-image: url('img/index/carrossel/3.jpeg');">
             <div class="hero-content">
                 <h1>Natureza e Tranquilidade</h1>
@@ -514,6 +608,161 @@
                 <img src="img/index/MAPA SITIO OK.png" alt="Mapa do Sítio Serra Bonita">
             </div>
         </section>
+
+        <section class="container">
+            <h3>Conheça São Lourenço da Serra</h3>
+            <div class="sls-grid">
+                <div class="sls-img">
+                    <!--<img src="img/index/atracoes/lagoa.jpg">
+                    <p class="img-legenda">Fonte: exemplo</p>-->
+                    <img src="img/index/atracoes/pesqueiro.jpg" style="margin-top:1rem;">
+                    <p class="img-legenda">Pesqueiro Triângulo - Est. Francisco Carlos Castro Neves, 66 <br> 
+                        Triângulo Azul, São Lourenço da Serra - SP</p>
+                    <img src="img/index/atracoes/templo.jpg" style="margin-top:1rem;">
+                    <p class="img-legenda">Templo Kinkaku-Ji - R. Camarão, 220 - 
+                        Chácara das Palmeiras<br> Itapecerica da Serra - SP</p>
+                    <img src="img/index/atracoes/mariacafe.jpg" style="margin-top:1rem;">
+                    <p class="img-legenda">Maria Café - Praça 10 de Agosto, 131 <br>
+                        Centro, São Lourenço da Serra - SP</p>
+                    <img src="img/index/atracoes/cachoeira.jpg" style="margin-top:1rem;">
+                    <p class="img-legenda">Cachoeira dos Pratas - Estr. dos Borges, 1 <br>
+                        Bairro dos Pratas, São Lourenço da Serra - SP</p>
+                </div>
+                <div class="sls-texto">
+                    <!--<p>
+                        &ensp; &ensp;Para quem curte cachoeiras, lagos e um contato maior com a natureza 
+                        nativa, São Lourenço da Serra é uma ótima opção fora da rota turística tradicional 
+                        para acrescentar no seu checklist de viagem.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Pela proximidade da capital, que de carro a viagem dura em torno de 1 hora, 
+                        a cidade pode ser visitada até em um “bate-volta”, mas tendo infraestrutura suficiente para 
+                        acomodar o viajante por alguns dias se quiser dar aquela descansada.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Com apenas 15 mil habitantes, a cidade ainda é bem “recente”, pois foi emancipada 
+                        de SP há 20 anos apenas e agrada aqueles que gostam desse clima mais interiorano.
+                    </p>-->
+
+                    <h5>&ensp; &ensp;&ensp; &ensp;&ensp; &ensp;&ensp; &ensp;
+                        O que fazer em São Lourenço da Serra</h5>
+                    <p>
+                        &ensp; &ensp;Com atrações bem direcionadas às belezas naturais que a cidade oferece, o ecoturismo 
+                        e o turismo de aventura são os principais focos das atividades oferecidas no local.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Os passeios são pensados aproveitando as cachoeiras, a vasta área de Mata Atlântica e 
+                        belas paisagens de fauna e flora diferenciados.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Por ainda estar explorando todo o potencial turístico da cidade, ainda não existem muitas 
+                        opções de atrações e os que existem não possuem tanta infraestrutura, podendo causar estranhamento 
+                        nos viajantes.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Ainda assim, as opções podem ser distribuídas em um final de semana com foco em descanso.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Para quem curte pescaria, conheça a Estância Pesqueira Campos ou o Pesqueiro Triangulo. Uma das principais atividades da cidade, os pesqueiros são lugares muito conservados para pescaria e uma bela paisagem natural.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Ao tratarmos das cachoeiras, não deixe de conhecer a Cachoeira do Paiol, com ótimas piscinas naturais, a Cachoeira do Sítio dos Lavras e a Cachoeira dos Pratas.
+                    </p>
+                    <p>
+                        &ensp; &ensp;O município possui ainda o acampamento de férias Rancho Ranieri, 
+                        com muitas opções de ecoturismo como tirolesa, canoagem, trilhas e mais.
+                    </p>
+                    <p>
+                        &ensp; &ensp;O Templo Kinkaku-Ji do Brasil também fica pertinho da cidade, sendo uma réplica 
+                        do templo de mesmo nome japonês, que fica ao redor de um belo lago e jardins muito bem cuidados.
+                    </p>
+
+                    <h5>&ensp; &ensp;&ensp; &ensp;&ensp; &ensp;&ensp; &ensp;
+                        &ensp; &ensp;&ensp; &ensp;&ensp; &ensp;&ensp; &ensp;Alimentação</h5>
+                    <p>
+                        &ensp; &ensp;Embora não exista um leque muito grande de variedades 
+                        na cidade para alimentação, o turista não deve passar aperto lá em nenhuma refeição.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Em sua visita, dê uma passadinha no Maria Café,
+                        para bolos, sobremesas e cafés. Para comida caseira, aposte no
+                        Restaurante Morro das Águas ou no Brasileiríssimo.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Para quem quer variar e curtir comida japonesa, o local
+                        possui o Restaurante Japa Tomotomo.
+                    </p>
+
+                    <h5>&ensp; &ensp;&ensp; &ensp;&ensp; &ensp;
+                        &ensp; &ensp;Como chegar em São Lourenço da Serra</h5>
+                    <p>
+                        &ensp; &ensp;Ao sair de São Paulo, basta acessar a rodovia BR-116 até São
+                         Lourenço da Serra em um trajeto que dura apenas 1 hora.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Se você vem de fora do estado, o aeroporto mais próximo é o de Congonhas,
+                        então vale descer lá e seguir viagem com algum carro alugado. Aqui você confere
+                        algumas opções baratas de passagens aéreas.
+                    </p>
+                    <p>
+                        &ensp; &ensp;Até o momento da consulta não existem linhas de ônibus que façam o
+                        percurso da capital direto para o município.
+                    </p>
+                </div></div>
+            <div>
+                <h3>Atrações na Região (Juquitiba - 15km)</h3>
+                <div class="atracoes-lista">
+                    <a href="https://www.canoar.com.br/Home/Atividade/1" target="_blank" class="atracao-card">
+                        <img src="img/index/atracoes/rafting.jpeg" alt="Rafting Rio Juquiá">
+                        <div class="atracao-info">
+                            <strong>Rafting e Aventura (Rio Juquiá):</strong>
+                            <p>A principal atração, com corredeiras emocionantes, operada por locais como o Sítio Canoar e base Rio Abaixo.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://vivaparque.com.br/" target="_blank" class="atracao-card">
+                        <img src="img/index/atracoes/parqueaquatico.jpeg" alt="Viva Parque Aquático Ecológico">
+                        <div class="atracao-info">
+                            <strong>Viva Parque Aquático Ecológico:</strong>
+                            <p>Oferece lazer, trilhas e piscinas, ideal para famílias.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.tocadaraposa.com.br/" target="_blank" class="atracao-card">
+                        <img src="img/index/atracoes/tocaraposa.jpeg" alt="Toca da Raposa">
+                        <div class="atracao-info">
+                            <strong>Toca da Raposa:</strong>
+                            <p>Centro de lazer e cultura que oferece experiências de natureza.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.tripadvisor.com.br/Attraction_Review-g2348877-d4053325-Reviews-Represa_Cachoeira_Franca-Juquitiba_State_of_Sao_Paulo.html" target="_blank" class="atracao-card">
+                        <img src="img/index/atracoes/represa.jpeg" alt="Represa Cachoeira do França">
+                        <div class="atracao-info">
+                            <strong>Represa Cachoeira do França:</strong>
+                            <p>Ótima para pesca esportiva, passeios de barco e jet ski.</p>
+                        </div>
+                    </a>
+
+                    <a href="http://turismo.juquitiba.sp.gov.br/cachoeira-do-palomar-2/" target="_blank" class="atracao-card">
+                        <img src="img/index/atracoes/palomar.jpeg" alt="Cachoeira do Palomar">
+                        <div class="atracao-info">
+                            <strong>Cachoeiras:</strong>
+                            <p>Destaque para a Cachoeira do Palomar, do Salete e do Engano/Cafezal.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.vilaviking.com.br/" target="_blank" class="atracao-card">
+                        <img src="img/index/atracoes/vilaviking.jpeg" alt="Vila Viking">
+                        <div class="atracao-info">
+                            <strong>Vila Viking:</strong>
+                            <p>Cenário temático inspirado na cultura nórdica.</p>
+                        </div>
+                    </a>
+                </div>
+                <p class="fonte-texto">Fonte: quantocustaviajar.com</p>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -527,7 +776,6 @@
     </a>
 
     <script>
-        // Carrossel
         let slideAtual = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.hero-dot');
@@ -551,7 +799,6 @@
 
         setInterval(proximoSlide, 5000);
 
-        // Menu Sanduíche
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
 
@@ -560,7 +807,6 @@
             navMenu.classList.toggle('active');
         });
 
-        // Fecha o menu ao clicar em um link
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
